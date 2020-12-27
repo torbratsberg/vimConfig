@@ -129,38 +129,10 @@ iabbrev icl console.log('');<Left><Left><Left>
 iabbrev irc rem-calc();<Left><Left>
 
 " }}}
-" STATUSLINE {{{
-
-let g:currentmode={
-            \ 'n'  : 'NORMAL',
-            \ 'v'  : 'VISUAL',
-            \ 'V'  : 'V·LINE',
-            \ '' : 'V·BLOCK',
-            \ 'i'  : 'INSERT',
-            \ 'R'  : 'R',
-            \ 'Rv' : 'V·REPLACE',
-            \ 'c'  : 'COMMAND',
-            \}
-
-"set laststatus=2
-"set statusline=
-"set statusline+=%#Title#
-"set statusline+=[%M%R]
-"set statusline+=\ \|
-"set statusline+=\ [\ %{g:currentmode[mode()]}\ ]
-"set statusline+=\ \|\ %f\ 
-"set statusline+=%#Status#
-"set statusline+=%=
-"set statusline+=%#Title#
-"set statusline+=\ %l:%c
-"set statusline+=\ \|\ %L
-"set statusline+=\ 
-
-" }}}
-" STARTIFY{{{{{{
+" STARTIFY {{{
 
 let g:startify_lists = [
   \ { 'type': 'files',     'header': ['   Most recently used']  },
 \ ]
 
-"}}}}}}
+"}}}
