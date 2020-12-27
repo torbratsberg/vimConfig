@@ -20,7 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'Chiel92/vim-autoformat'
-Plug 'mhinz/vim-startify'
+Plug 'pechorin/any-jump.vim'
 
 call plug#end()
 
@@ -101,6 +101,7 @@ map <leader>w :w<CR>
 map <C-c> :e ~/.vim/vimrc<CR>
 map <C-s> :%s///<Left><Left>
 map <C-x> :let @/=''<CR>
+" √ = Alt + j && ª == Alt + k
 map ª :move-2<CR>
 map √ :move+1<CR>
 
@@ -120,6 +121,8 @@ vnoremap <Space> zf
 
 map <leader>gs :Gstatus<Cr>
 map <leader>gc :Gcommit<Cr>
+map <leader>gg :Gpull<Cr>
+map <leader>gp :Gpush<Cr>
 
 " }}}
 " ABBREVATIONS {{{
@@ -129,10 +132,3 @@ iabbrev icl console.log('');<Left><Left><Left>
 iabbrev irc rem-calc();<Left><Left>
 
 " }}}
-" STARTIFY {{{
-
-let g:startify_lists = [
-  \ { 'type': 'files',     'header': ['   Most recently used']  },
-\ ]
-
-"}}}
