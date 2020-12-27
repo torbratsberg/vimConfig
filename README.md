@@ -1,2 +1,6 @@
 # My VIM configuration
-### Run :PlugInstall to install all the plugins
+### Setup:
+- $ cd ~/.vim
+- $ mkdir plugged
+- $ vim
+- :PlugInstall
