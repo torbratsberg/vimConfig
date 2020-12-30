@@ -15,7 +15,7 @@ Plug 'airblade/vim-rooter'
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
@@ -67,6 +67,10 @@ let g:table_mode_corner='|'                     " Make table mode markdown compa
 let g:python3_host_prog="/urs/local/bin/"       " Path to python dir
 let g:fzf_preview_window = []                   " Set FZF preview window to be 50% on the bottom
 let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } } " Set FZF window size
+" Use @ instead of ; in EasyMotion search for ISO layout convenience
+let g:EasyMotion_keys               = get(g:,
+    \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
+    " \ 'EasyMotion_keys', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
 " }}}
 " APPEARANCE {{{
