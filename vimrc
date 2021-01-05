@@ -27,6 +27,8 @@ call plug#end()
 " }}}
 " MISC {{{
 
+filetype plugin indent on                       " Don't know what this does
+autocmd FileType  html,css EmmetInstall         " Only use emmet for HTML and CSS
 set history=400                                 " Remember 400 changes
 set foldmethod=marker                           " Fold on marker
 set hidden                                      " Enable unsaved files in buffer
@@ -35,8 +37,6 @@ set path+=**                                    " Set path
 set wildmenu                                    " Enable wildmenu
 set wildignore+=**/node_modules/**,*.o,*.pyc    " Make wildmenu ignore certain files and folders
 set nowrap                                      " Don't wrap lines
-filetype plugin indent on                       " Don't know what this does
-autocmd FileType  html,css EmmetInstall         " Only use emmet for HTML and CSS
 set tabstop=4                                   " show existing tab with 4 spaces width
 set shiftwidth=4                                " when indenting with '>', use 4 spaces width
 set expandtab                                   " On pressing tab, insert 4 spaces
@@ -68,9 +68,8 @@ let g:python3_host_prog="/urs/local/bin/"       " Path to python dir
 let g:fzf_preview_window = []                   " Set FZF preview window to be 50% on the bottom
 let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } } " Set FZF window size
 " Use @ instead of ; in EasyMotion search for ISO layout convenience
-let g:EasyMotion_keys               = get(g:,
+let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
-    " \ 'EasyMotion_keys', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
 " }}}
 " APPEARANCE {{{
@@ -91,10 +90,10 @@ set rnu                                         " Use relative line numbering
 let leader=","                                   " Set comma to be Leader key
 let mapleader=","                                " Set comma to be map Leader key
 
-nmap <C-f> :Files<CR>
-nmap <C-a> :BLines<CR>
+nmap <C-a> :Files<CR>
+nmap <C-z> :BLines<CR>
+nmap <C-q> :Buffers<CR>
 nmap <C-g> :Rg<CR>
-nmap <C-b> :Buffers<CR>
 nmap m <Plug>(easymotion-s)
 
 map <leader>e <plug>(emmet-expand-abbr)
@@ -123,10 +122,10 @@ inoremap {<CR> {<CR>}<ESC>O
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-map <leader>gs :Gstatus<Cr>
-map <leader>gc :Gcommit<Cr>
-map <leader>gg :Gpull<Cr>
-map <leader>gp :Gpush<Cr>
+map <leader>gs :Gstatus<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gg :Gpull<CR>
+map <leader>gp :Gpush<CR>
 
 " }}}
 " ABBREVATIONS {{{
