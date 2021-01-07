@@ -15,7 +15,7 @@ Plug 'airblade/vim-rooter'
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
@@ -48,7 +48,7 @@ set hlsearch                                    " Highlight search matches
 set incsearch                                   " Incremental search ( Live preview of search I think )
 set ignorecase                                  " Case insensitive search
 set smartcase                                   " Do smart case matching
-set showcmd                                     " Show partial commands in the last line of the screen set noesckeys
+set showcmd                                     " Show partial commands in the last line of the screen 
 set noesckeys                                   " Set escape to be recognized straight away
 set nocompatible                                " Not completely sure what this does
 set foldcolumn=1                                " Show fold columns, width: 2
@@ -71,6 +71,39 @@ let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } } " Set FZF windo
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
+"set completeopt+=menuone,noselect,noinsert
+"function! OpenCompletion()
+    "if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
+        "call feedkeys("\<C-x>\<C-o>", \"n")
+    "endif
+"endfunction
+
+"autocmd InsertCharPre * call OpenCompletion()
+
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+
+
 " }}}
 " APPEARANCE {{{
 
@@ -90,9 +123,8 @@ set rnu                                         " Use relative line numbering
 let leader=","                                   " Set comma to be Leader key
 let mapleader=","                                " Set comma to be map Leader key
 
-nmap <C-a> :Files<CR>
-nmap <C-z> :BLines<CR>
-nmap <C-q> :Buffers<CR>
+nmap <C-f> :Files<CR>
+nmap <C-b> :Buffers<CR>
 nmap <C-g> :Rg<CR>
 nmap m <Plug>(easymotion-s)
 
