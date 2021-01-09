@@ -17,7 +17,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'Chiel92/vim-autoformat'
 Plug 'pechorin/any-jump.vim'
@@ -29,6 +29,7 @@ call plug#end()
 
 filetype plugin indent on                       " Don't know what this does
 autocmd FileType  html,css EmmetInstall         " Only use emmet for HTML and CSS
+autocmd FileType scss setl iskeyword+=@-@       " Coc for scss files
 set history=400                                 " Remember 400 changes
 set foldmethod=marker                           " Fold on marker
 set hidden                                      " Enable unsaved files in buffer
@@ -61,6 +62,8 @@ set noswapfile                                  " Don't make swap files ???
 set splitright                                  " New v-split is made to the right
 set splitbelow                                  " New split is made under current
 set showmatch                                   " Highlight matching bracket
+set completeopt=longest,menuone                 " Completion menu options
+"let b:ale_linters = {'javascript': ['eslint']}  " Ale linters
 let g:rooter_patterns=['themes']                " Make themes the root dir for FZF
 let g:rooter_manual_only=1                      " Prevent FZF from changing directory
 let g:table_mode_corner='|'                     " Make table mode markdown compatible
@@ -70,39 +73,6 @@ let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } } " Set FZF windo
 " Use @ instead of ; in EasyMotion search for ISO layout convenience
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
-
-"set completeopt+=menuone,noselect,noinsert
-"function! OpenCompletion()
-    "if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
-        "call feedkeys("\<C-x>\<C-o>", \"n")
-    "endif
-"endfunction
-
-"autocmd InsertCharPre * call OpenCompletion()
-
-function! Smart_TabComplete()
-  let line = getline('.')                         " current line
-
-  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  " line to one character right
-                                                  " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  if (strlen(substr)==0)                          " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1      " position of period, if any
-  let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                         " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                         " file matching
-  else
-    return "\<C-X>\<C-O>"                         " plugin matching
-  endif
-endfunction
-
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-
 
 " }}}
 " APPEARANCE {{{
@@ -128,7 +98,9 @@ nmap <C-b> :Buffers<CR>
 nmap <C-g> :Rg<CR>
 nmap m <Plug>(easymotion-s)
 
-map <leader>e <plug>(emmet-expand-abbr)
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+imap <C-e> <Esc><plug>(emmet-expand-abbr) <Left>i
+
 map <leader>c :source ~/.vim/vimrc<CR> :echo 'Sourced ~/.vimrc'<CR>
 map <leader>f :Autoformat<cr>
 map <leader>n :e ~/.vim/notes.md<CR>
@@ -148,6 +120,12 @@ nmap <C-l> <C-w>l
 vmap < < gv
 vmap > > gv
 vmap <Esc> <C-c>
+
+imap (<Tab> ()<Left>
+imap [<Tab> []<Left>
+imap {<Tab> {}<Left>
+imap '<Tab> ''<Left>
+imap "<Tab> ""<Left>
 
 inoremap {<CR> {<CR>}<ESC>O
 
