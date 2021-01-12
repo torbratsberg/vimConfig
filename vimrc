@@ -4,7 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tomasr/molokai'
+Plug 'vim-scripts/AutoComplPop'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,7 +17,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
-"Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'Chiel92/vim-autoformat'
 Plug 'pechorin/any-jump.vim'
@@ -27,49 +26,55 @@ call plug#end()
 " }}}
 " MISC {{{
 
-filetype plugin indent on                       " Don't know what this does
-autocmd FileType  html,css EmmetInstall         " Only use emmet for HTML and CSS
-autocmd FileType scss setl iskeyword+=@-@       " Coc for scss files
-set history=400                                 " Remember 400 changes
-set foldmethod=marker                           " Fold on marker
-set hidden                                      " Enable unsaved files in buffer
-set guicursor+=a:blinkon0                       " Stop cursor blinking
-set path+=**                                    " Set path
-set wildmenu                                    " Enable wildmenu
-set wildignore+=**/node_modules/**,*.o,*.pyc    " Make wildmenu ignore certain files and folders
-set nowrap                                      " Don't wrap lines
-set tabstop=4                                   " show existing tab with 4 spaces width
-set shiftwidth=4                                " when indenting with '>', use 4 spaces width
-set expandtab                                   " On pressing tab, insert 4 spaces
-set ai                                          " Auto indent
-set si                                          " Smart indent
-set smarttab                                    " Smart tabbing
-set encoding=utf-8                              " Encoding
-set hlsearch                                    " Highlight search matches
-set incsearch                                   " Incremental search ( Live preview of search I think )
-set ignorecase                                  " Case insensitive search
-set smartcase                                   " Do smart case matching
-set showcmd                                     " Show partial commands in the last line of the screen 
-set noesckeys                                   " Set escape to be recognized straight away
-set nocompatible                                " Not completely sure what this does
-set foldcolumn=1                                " Show fold columns, width: 2
-set so=5                                        " 5 Lines to cursor
-set lazyredraw                                  " Don't't redraw when executin macros ( for performance )
-set ttyfast                                     " Performance thingy
-set nobackup                                    " Don't take backups
-set nowb                                        " Don't do wb stuff ???
-set noswapfile                                  " Don't make swap files ???
-set splitright                                  " New v-split is made to the right
-set splitbelow                                  " New split is made under current
-set showmatch                                   " Highlight matching bracket
-set completeopt=longest,menuone                 " Completion menu options
-"let b:ale_linters = {'javascript': ['eslint']}  " Ale linters
-let g:rooter_patterns=['themes']                " Make themes the root dir for FZF
-let g:rooter_manual_only=1                      " Prevent FZF from changing directory
-let g:table_mode_corner='|'                     " Make table mode markdown compatible
-let g:python3_host_prog="/urs/local/bin/"       " Path to python dir
-let g:fzf_preview_window = []                   " Set FZF preview window to be 50% on the bottom
-let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } } " Set FZF window size
+filetype plugin indent on
+autocmd FileType html,css EmmetInstall
+autocmd FileType scss setl iskeyword+=@-@
+set history=400
+set foldmethod=marker
+set hidden
+set guicursor+=a:blinkon0
+set path+=**
+set wildmenu
+set wildignore+=**/node_modules/**,*.o,*.pyc
+set nowrap
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set ai
+set si
+set smarttab
+set encoding=utf-8
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showcmd
+set noesckeys
+set nocompatible
+set foldcolumn=1
+set so=5
+set lazyredraw
+set ttyfast
+set nobackup
+set nowb
+set noswapfile
+set splitright
+set splitbelow
+set showmatch
+set completeopt=longest,menuone,noinsert
+
+" }}}
+" LETS {{{
+
+let leader=","
+let mapleader=","
+
+let g:rooter_patterns=['themes']
+let g:rooter_manual_only=1
+let g:table_mode_corner='|'
+let g:python3_host_prog="/urs/local/bin/"
+let g:fzf_preview_window = []
+let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } }
 " Use @ instead of ; in EasyMotion search for ISO layout convenience
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
@@ -77,21 +82,17 @@ let g:EasyMotion_keys=get(g:,
 " }}}
 " APPEARANCE {{{
 
-colorscheme gruvbox                             " Set colorscheme
-let g:gruvbox_contrast_dark='hard'              " Set hard contrast on dark background
-set background=dark                             " Always use dark background
-syntax enable                                   " Enable syntax highlighting
-syntax on                                       " Enable syntax highlighting
-set synmaxcol=300                               " Only render syntax highlighting for 300 cols
-set visualbell                                  " Blink cursor on error instead of beeping (grr)
-set number                                      " Show line numbers
-set rnu                                         " Use relative line numbering
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+syntax on
+set synmaxcol=300
+set visualbell
+set number
+set rnu
 
 " }}}
 " KEYMAPPINGS {{{
-
-let leader=","                                   " Set comma to be Leader key
-let mapleader=","                                " Set comma to be map Leader key
 
 nmap <C-f> :Files<CR>
 nmap <C-b> :Buffers<CR>
@@ -108,9 +109,12 @@ map <leader>w :w<CR>
 map <C-c> :e ~/.vim/vimrc<CR>
 map <C-s> :%s///<Left><Left>
 map <C-x> :let @/=''<CR>
+
 " √ = Alt + j && ª == Alt + k
 map ª :move-2<CR>
 map √ :move+1<CR>
+map <Cr> o<Esc>
+map <S-cr> O<Esc>
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -119,14 +123,12 @@ nmap <C-l> <C-w>l
 
 vmap < < gv
 vmap > > gv
-vmap <Esc> <C-c>
 
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
-
 inoremap {<CR> {<CR>}<ESC>O
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
