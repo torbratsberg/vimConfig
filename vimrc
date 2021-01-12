@@ -65,8 +65,8 @@ set completeopt=longest,menuone
 " }}}
 " LETS {{{
 
-let Leader=","
-let mapLeader=","
+let leader=","
+let mapleader=","
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
@@ -94,6 +94,8 @@ set rnu
 
 " }}}
 " KEYMAPPINGS {{{
+
+map <leader>m <C-]>
 
 nmap <Leader>tt :s/\[[ ]\]/\[\+\]/g<cr>:noh<Cr>
 nmap <Leader>td I[<Space>]<Esc>a<Space>
