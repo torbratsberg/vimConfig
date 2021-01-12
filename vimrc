@@ -126,7 +126,7 @@ vmap < < gv
 vmap > > gv
 
 imap (<Tab> ()<Left>
-imap [<Tab> [+]<Left>
+imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
