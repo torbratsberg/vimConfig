@@ -6,20 +6,19 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-scripts/AutoComplPop'
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'mattn/emmet-vim'
-Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'Chiel92/vim-autoformat'
 Plug 'pechorin/any-jump.vim'
+Plug 'preservim/nerdtree'
+Plug 'https://github.com/tpope/vim-commentary'
 
 call plug#end()
 
@@ -29,6 +28,8 @@ call plug#end()
 filetype plugin indent on
 autocmd FileType html,css EmmetInstall
 autocmd FileType scss setl iskeyword+=@-@
+set showtabline=0
+set autoread
 set history=400
 set foldmethod=marker
 set hidden
@@ -46,12 +47,9 @@ set smarttab
 set encoding=utf-8
 set hlsearch
 set incsearch
-set ignorecase
-set smartcase
-set showcmd
+set noshowcmd
 set noesckeys
 set nocompatible
-set foldcolumn=1
 set so=5
 set lazyredraw
 set ttyfast
@@ -61,7 +59,7 @@ set noswapfile
 set splitright
 set splitbelow
 set showmatch
-set completeopt=longest,menuone,noinsert
+set completeopt=longest,menuone
 
 " }}}
 " LETS {{{
@@ -73,9 +71,8 @@ let g:rooter_patterns=['themes']
 let g:rooter_manual_only=1
 let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
-let g:fzf_preview_window = []
-let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.3 } }
-" Use @ instead of ; in EasyMotion search for ISO layout convenience
+let g:fzf_preview_window = [0]
+let g:fzf_layout = { 'down': '30%' }
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
@@ -94,9 +91,13 @@ set rnu
 " }}}
 " KEYMAPPINGS {{{
 
+nmap <Leader>tt :s/\[[ ]\]/\[\+\]/g<Cr>:noh<Cr>
+nmap <Leader>td I[<Space>]<Esc>a<Space>
+
 nmap <C-f> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-g> :Rg<CR>
+nmap <C-t> :NERDTreeToggle<Cr>
 nmap m <Plug>(easymotion-s)
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -125,7 +126,7 @@ vmap < < gv
 vmap > > gv
 
 imap (<Tab> ()<Left>
-imap [<Tab> []<Left>
+imap [<Tab> [+]<Left>
 imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
@@ -145,5 +146,20 @@ map <leader>gp :Gpush<CR>
 iabbrev iphp <?php ?><Left><Left><Left>
 iabbrev icl console.log('');<Left><Left><Left>
 iabbrev irc rem-calc();<Left><Left>
+
+" }}}
+" STATUSLINE {{{
+
+set laststatus=2
+set statusline=
+set statusline+=%#Title#
+set statusline+=[%M%R]
+set statusline+=\ \|\ %f
+set statusline+=\ %#Status#
+set statusline+=%=
+set statusline+=%#Title#
+set statusline+=\ %l:%c
+set statusline+=\ \|\ %L
+set statusline+=\ 
 
 " }}}
