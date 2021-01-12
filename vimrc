@@ -26,8 +26,9 @@ call plug#end()
 " MISC {{{
 
 filetype plugin indent on
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,scss EmmetInstall
 autocmd FileType scss setl iskeyword+=@-@
+autocmd VimEnter * NERDTree | wincmd p
 set showtabline=0
 set autoread
 set history=400
@@ -64,15 +65,18 @@ set completeopt=longest,menuone
 " }}}
 " LETS {{{
 
-let leader=","
-let mapleader=","
+let Leader=","
+let mapLeader=","
 
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let g:EasyMotion_do_mapping = 0
 let g:rooter_patterns=['themes']
 let g:rooter_manual_only=1
 let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
 let g:fzf_preview_window = [0]
-let g:fzf_layout = { 'down': '30%' }
+let g:fzf_layout = { 'down': '40%' }
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
@@ -91,30 +95,30 @@ set rnu
 " }}}
 " KEYMAPPINGS {{{
 
-nmap <Leader>tt :s/\[[ ]\]/\[\+\]/g<Cr>:noh<Cr>
+nmap <Leader>tt :s/\[[ ]\]/\[\+\]/g<cr>:noh<Cr>
 nmap <Leader>td I[<Space>]<Esc>a<Space>
 
-nmap <C-f> :Files<CR>
-nmap <C-b> :Buffers<CR>
-nmap <C-g> :Rg<CR>
-nmap <C-t> :NERDTreeToggle<Cr>
-nmap m <Plug>(easymotion-s)
+nmap <C-f> :Files<cr>
+nmap <C-b> :Buffers<cr>
+nmap <C-g> :Rg<cr>
+nmap <C-t> :NERDTreeToggle<cr>
+nmap m <Plug>(easymotion-overwin-f)
 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 imap <C-e> <Esc><plug>(emmet-expand-abbr) <Left>i
 
-map <leader>c :source ~/.vim/vimrc<CR> :echo 'Sourced ~/.vimrc'<CR>
-map <leader>f :Autoformat<cr>
-map <leader>n :e ~/.vim/notes.md<CR>
-map <leader>w :w<CR>
-map <C-c> :e ~/.vim/vimrc<CR>
+map <Leader>c :source ~/.vim/vimrc<cr> :echo 'Sourced ~/.vimrc'<CR>
+map <Leader>f :Autoformat<cr>
+map <Leader>n :e ~/.vim/notes.md<cr>
+map <Leader>w :w<cr>
+map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
-map <C-x> :let @/=''<CR>
+map <C-x> :let @/=''<cr>
 
 " √ = Alt + j && ª == Alt + k
-map ª :move-2<CR>
-map √ :move+1<CR>
-map <Cr> o<Esc>
+map ª :move-2<cr>
+map √ :move+1<cr>
+map <cr> o<Esc>
 map <S-cr> O<Esc>
 
 nmap <C-h> <C-w>h
@@ -130,15 +134,16 @@ imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
-inoremap {<CR> {<CR>}<ESC>O
+inoremap {<cr> {<CR>}<ESC>O
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap <Space> zf
 
-map <leader>gs :Gstatus<CR>
-map <leader>gc :Gcommit<CR>
-map <leader>gg :Gpull<CR>
-map <leader>gp :Gpush<CR>
+map <Leader>gs :Gstatus<cr>
+map <Leader>gc :Gcommit<cr>
+map <Leader>gg :Gpull<cr>
+map <Leader>gp :Gpush<cr>
+map <Leader>gl :Commits<cr>
 
 " }}}
 " ABBREVATIONS {{{
@@ -163,3 +168,4 @@ set statusline+=\ \|\ %L
 set statusline+=\ 
 
 " }}}
+
