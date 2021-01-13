@@ -76,7 +76,7 @@ let g:rooter_manual_only=1
 let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
 let g:fzf_preview_window = [0]
-let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'down': '20%' }
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
