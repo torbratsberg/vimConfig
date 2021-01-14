@@ -17,7 +17,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'Chiel92/vim-autoformat'
 Plug 'pechorin/any-jump.vim'
-Plug 'preservim/nerdtree'
 Plug 'https://github.com/tpope/vim-commentary'
 
 call plug#end()
@@ -102,6 +101,7 @@ nmap <Leader>td I[<Space>]<Esc>a<Space>
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
+nmap <C-a> :BLines<cr>
 nmap <C-g> :Rg<cr>
 nmap <C-t> :NERDTreeToggle<cr>
 nmap m <Plug>(easymotion-overwin-f)
