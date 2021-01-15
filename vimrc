@@ -27,7 +27,6 @@ call plug#end()
 filetype plugin indent on
 autocmd FileType html,css,scss EmmetInstall
 autocmd FileType scss setl iskeyword+=@-@
-autocmd VimEnter * NERDTree | wincmd p
 set showtabline=0
 set autoread
 set history=400
@@ -59,7 +58,7 @@ set noswapfile
 set splitright
 set splitbelow
 set showmatch
-set completeopt=longest,menuone
+set completeopt=longest,menuone,noinsert
 
 " }}}
 " LETS {{{
@@ -67,8 +66,6 @@ set completeopt=longest,menuone
 let leader=","
 let mapleader=","
 
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
 let g:EasyMotion_do_mapping = 0
 let g:rooter_patterns=['themes']
 let g:rooter_manual_only=1
@@ -94,16 +91,14 @@ set rnu
 " }}}
 " KEYMAPPINGS {{{
 
-map <leader>m <C-]>
-
-nmap <Leader>tt :s/\[[ ]\]/\[\+\]/g<cr>:noh<Cr>
 nmap <Leader>td I[<Space>]<Esc>a<Space>
+nmap <Leader>tf :s/\[[ ]\]/\[\+\]/g<cr>:noh<Cr>
+nmap <Leader>tg :s/\[[+]\]/\[ \]/g<cr>:noh<Cr>
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
-nmap <C-a> :BLines<cr>
 nmap <C-g> :Rg<cr>
-nmap <C-t> :NERDTreeToggle<cr>
+nmap <C-q> :bd<cr>
 nmap m <Plug>(easymotion-overwin-f)
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -115,7 +110,7 @@ map <Leader>n :e ~/.vim/notes.md<cr>
 map <Leader>w :w<cr>
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
-map <C-x> :let @/=''<cr>
+map <C-z> :let @/=''<cr>
 
 " √ = Alt + j && ª == Alt + k
 map ª :move-2<cr>
@@ -170,4 +165,3 @@ set statusline+=\ \|\ %L
 set statusline+=\ 
 
 " }}}
-
