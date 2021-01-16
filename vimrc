@@ -4,18 +4,15 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-scripts/AutoComplPop'
 Plug 'morhetz/gruvbox'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
-Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'Chiel92/vim-autoformat'
 Plug 'pechorin/any-jump.vim'
 Plug 'https://github.com/tpope/vim-commentary'
 
@@ -25,11 +22,11 @@ call plug#end()
 " MISC {{{
 
 filetype plugin indent on
-autocmd FileType html,css,scss EmmetInstall
 autocmd FileType scss setl iskeyword+=@-@
 set showtabline=0
 set autoread
 set history=400
+set updatetime=300
 set foldmethod=marker
 set hidden
 set guicursor+=a:blinkon0
@@ -50,6 +47,8 @@ set noshowcmd
 set noesckeys
 set nocompatible
 set so=5
+set shortmess+=c
+set signcolumn=yes
 set lazyredraw
 set ttyfast
 set nobackup
@@ -72,7 +71,8 @@ let g:rooter_manual_only=1
 let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
 let g:fzf_preview_window = [0]
-let g:fzf_layout = { 'down': '20%' }
+let g:fzf_layout = { 'down': '30%' }
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
@@ -91,26 +91,26 @@ set rnu
 " }}}
 " KEYMAPPINGS {{{
 
-nmap <Leader>td I[<Space>]<Esc>a<Space>
-nmap <Leader>tf :s/\[[ ]\]/\[\+\]/g<cr>:noh<Cr>
-nmap <Leader>tg :s/\[[+]\]/\[ \]/g<cr>:noh<Cr>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>d <Plug>(coc-definition)
+nmap <silent><nowait> <leader>p  :<C-u>CocList diagnostics<cr>
+nmap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
 nmap <C-g> :Rg<cr>
-nmap <C-q> :bd<cr>
-nmap m <Plug>(easymotion-overwin-f)
+nmap t <Plug>(easymotion-overwin-f)
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-imap <C-e> <Esc><plug>(emmet-expand-abbr) <Left>i
-
-map <Leader>c :source ~/.vim/vimrc<cr> :echo 'Sourced ~/.vimrc'<CR>
-map <Leader>f :Autoformat<cr>
+map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>n :e ~/.vim/notes.md<cr>
 map <Leader>w :w<cr>
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
-map <C-z> :let @/=''<cr>
+map <C-z> :noh<cr>
 
 " √ = Alt + j && ª == Alt + k
 map ª :move-2<cr>
@@ -146,7 +146,7 @@ map <Leader>gl :Commits<cr>
 " ABBREVATIONS {{{
 
 iabbrev iphp <?php ?><Left><Left><Left>
-iabbrev icl console.log('');<Left><Left><Left>
+iabbrev icl console.log();<Left><Left>
 iabbrev irc rem-calc();<Left><Left>
 
 " }}}
