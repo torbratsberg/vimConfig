@@ -23,6 +23,7 @@ call plug#end()
 
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
+set colorcolumn=80
 set showtabline=0
 set autoread
 set history=400
