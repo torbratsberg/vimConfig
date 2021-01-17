@@ -23,7 +23,8 @@ call plug#end()
 
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
-set colorcolumn=80
+set guioptions=
+set colorcolumn=90
 set showtabline=0
 set autoread
 set history=400
@@ -73,6 +74,7 @@ let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
 let g:fzf_preview_window = [0]
 let g:fzf_layout = { 'down': '30%' }
+let $FZF_DEFAULT_OPTS='--reverse'
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:EasyMotion_keys=get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
@@ -98,8 +100,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>d <Plug>(coc-definition)
-nmap <silent><nowait> <leader>p  :<C-u>CocList diagnostics<cr>
-nmap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+nmap <leader>cr <Plug>(coc-references)
+nmap <leader>cp  :<C-u>CocList diagnostics<cr>
+nmap <leader>co  :<C-u>CocList outline<cr>
+
+nmap <tab> '
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
@@ -123,6 +128,7 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+nmap <tab><tab> <C-6>
 
 vmap < < gv
 vmap > > gv
