@@ -9,7 +9,6 @@ Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
-Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
@@ -72,12 +71,10 @@ let g:rooter_patterns=['themes']
 let g:rooter_manual_only=1
 let g:table_mode_corner='|'
 let g:python3_host_prog="/urs/local/bin/"
+let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
 let g:fzf_layout = { 'down': '30%' }
 let $FZF_DEFAULT_OPTS='--reverse'
-let g:coc_global_extensions = [ 'coc-tsserver' ]
-let g:EasyMotion_keys=get(g:,
-    \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
 " }}}
 " APPEARANCE {{{
@@ -109,7 +106,6 @@ nmap <tab> '
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
 nmap <C-g> :Rg<cr>
-nmap t <Plug>(easymotion-overwin-f)
 
 map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>n :e ~/.vim/notes.md<cr>
@@ -154,7 +150,7 @@ map <Leader>gl :Commits<cr>
 
 iabbrev iphp <?php ?><Left><Left><Left>
 iabbrev icl console.log();<Left><Left>
-iabbrev irc rem-calc();<Left><Left>
+iabbrev irc rem-calc()<Left><Left>
 
 " }}}
 " STATUSLINE {{{
