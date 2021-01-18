@@ -13,7 +13,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'pechorin/any-jump.vim'
-Plug 'https://github.com/tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+
 
 call plug#end()
 
@@ -94,22 +96,26 @@ set rnu
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>d <Plug>(coc-definition)
+xmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
 nmap <leader>cp  :<C-u>CocList diagnostics<cr>
 nmap <leader>co  :<C-u>CocList outline<cr>
+map <Leader>c :source ~/.vim/vimrc<cr>
+map <Leader>n :e ~/.vim/notes.md<cr>
+map <Leader>w :w<cr>
+map <Leader>gs :Gstatus<cr>
+map <Leader>gc :Gcommit<cr>
+map <Leader>gg :Gpull<cr>
+map <Leader>gp :Gpush<cr>
+map <Leader>gl :Commits<cr>
 
-nmap <tab> '
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
 nmap <C-g> :Rg<cr>
 
-map <Leader>c :source ~/.vim/vimrc<cr>
-map <Leader>n :e ~/.vim/notes.md<cr>
-map <Leader>w :w<cr>
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
 map <C-z> :noh<cr>
@@ -129,6 +135,12 @@ nmap <tab><tab> <C-6>
 vmap < < gv
 vmap > > gv
 
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
+vnoremap <Space> zf
+
+nmap <tab> '
+nmap t <Plug>(easymotion-overwin-f)
+
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
@@ -136,21 +148,12 @@ imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
 inoremap {<cr> {<CR>}<ESC>O
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
-vnoremap <Space> zf
-
-map <Leader>gs :Gstatus<cr>
-map <Leader>gc :Gcommit<cr>
-map <Leader>gg :Gpull<cr>
-map <Leader>gp :Gpush<cr>
-map <Leader>gl :Commits<cr>
-
 " }}}
 " ABBREVATIONS {{{
 
 iabbrev iphp <?php ?><Left><Left><Left>
 iabbrev icl console.log();<Left><Left>
-iabbrev irc rem-calc()<Left><Left>
+iabbrev irc rem-calc()<Left>
 
 " }}}
 " STATUSLINE {{{
@@ -167,4 +170,4 @@ set statusline+=\ %l:%c
 set statusline+=\ \|\ %L
 set statusline+=\ 
 
-" }}}
+ " }}}
