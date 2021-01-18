@@ -82,9 +82,9 @@ let $FZF_DEFAULT_OPTS='--reverse'
 " APPEARANCE {{{
 
 colorscheme gruvbox
+syntax on
 let g:gruvbox_contrast_dark='hard'
 set background=dark
-syntax on
 set synmaxcol=300
 set visualbell
 set number
@@ -102,6 +102,8 @@ nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
 nmap <leader>cp  :<C-u>CocList diagnostics<cr>
 nmap <leader>co  :<C-u>CocList outline<cr>
+nmap <leader>d ciw""<esc>P
+nmap <leader>s ciw''<esc>P
 map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>n :e ~/.vim/notes.md<cr>
 map <Leader>w :w<cr>
@@ -110,7 +112,6 @@ map <Leader>gc :Gcommit<cr>
 map <Leader>gg :Gpull<cr>
 map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
-
 
 nmap <C-f> :Files<cr>
 nmap <C-b> :Buffers<cr>
