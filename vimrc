@@ -12,7 +12,6 @@ Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'pechorin/any-jump.vim'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 
@@ -25,7 +24,7 @@ call plug#end()
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
 set guioptions=
-set colorcolumn=90
+set colorcolumn=80
 set showtabline=0
 set autoread
 set history=400
@@ -65,8 +64,8 @@ set completeopt=longest,menuone,noinsert
 " }}}
 " LETS {{{
 
-let leader=","
-let mapleader=","
+let leader=" "
+let mapleader=" "
 
 let g:EasyMotion_do_mapping = 0
 let g:rooter_patterns=['themes']
@@ -102,8 +101,8 @@ nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
 nmap <leader>cp  :<C-u>CocList diagnostics<cr>
 nmap <leader>co  :<C-u>CocList outline<cr>
-nmap <leader>d ciw""<esc>P
-nmap <leader>s ciw''<esc>P
+nmap <leader>qd ciw""<esc>P
+nmap <leader>qs ciw''<esc>P
 map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>n :e ~/.vim/notes.md<cr>
 map <Leader>w :w<cr>
@@ -136,8 +135,8 @@ nmap <tab><tab> <C-6>
 vmap < < gv
 vmap > > gv
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
-vnoremap <Space> zf
+nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
+vnoremap , zf
 
 nmap <tab> '
 nmap t <Plug>(easymotion-overwin-f)
