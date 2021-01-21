@@ -21,10 +21,14 @@ call plug#end()
 " }}}
 " MISC {{{
 
+augroup colorcolumns
+    au!
+    autocmd FileType python,js,c,ts set colorcolumn=80
+augroup END
+
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
 set guioptions=
-set colorcolumn=80
 set showtabline=0
 set autoread
 set history=400
@@ -99,13 +103,17 @@ xmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
+nmap <leader>cn  <Plug>(coc-rename)
 nmap <leader>cp  :<C-u>CocList diagnostics<cr>
 nmap <leader>co  :<C-u>CocList outline<cr>
+
 nmap <leader>qd ciw""<esc>P
 nmap <leader>qs ciw''<esc>P
+
 map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>n :e ~/.vim/notes.md<cr>
 map <Leader>w :w<cr>
+
 map <Leader>gs :Gstatus<cr>
 map <Leader>gc :Gcommit<cr>
 map <Leader>gg :Gpull<cr>
@@ -120,17 +128,17 @@ map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
 map <C-z> :noh<cr>
 
-" √ = Alt + j && ª == Alt + k
-map ª :move-2<cr>
-map √ :move+1<cr>
-map <cr> o<Esc>
-map <S-cr> O<Esc>
-
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <tab><tab> <C-6>
+
+" √ = Alt + j && ª == Alt + k
+map ª :move-2<cr>
+map √ :move+1<cr>
+map <cr> o<Esc>
+map <S-cr> O<Esc>
 
 vmap < < gv
 vmap > > gv
