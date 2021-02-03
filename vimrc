@@ -4,27 +4,24 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+Plug 'mxw/vim-jsx'
+Plug 'ap/vim-css-color'
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
 
 call plug#end()
 
 " }}}
 " MISC {{{
-
-augroup colorcolumns
-    au!
-    autocmd FileType python,js,c,ts set colorcolumn=80
-augroup END
 
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
@@ -43,16 +40,16 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set ai
-set si
+set autoindent
+set smartindent
 set smarttab
-set encoding=utf-8
+set encoding=UTF-8
 set hlsearch
 set incsearch
 set noshowcmd
 set noesckeys
 set nocompatible
-set so=5
+set scrolloff=5
 set shortmess+=c
 set signcolumn=yes
 set lazyredraw
@@ -74,7 +71,7 @@ let mapleader=" "
 let g:EasyMotion_do_mapping = 0
 let g:rooter_patterns=['themes']
 let g:rooter_manual_only=1
-let g:table_mode_corner='|'
+let g:table_mode_corner='+'
 let g:python3_host_prog="/urs/local/bin/"
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
@@ -87,11 +84,13 @@ let $FZF_DEFAULT_OPTS='--reverse'
 colorscheme gruvbox
 syntax on
 let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='hard'
 set background=dark
 set synmaxcol=300
 set visualbell
 set number
 set rnu
+set guifont=Menlo:h14
 
 " }}}
 " KEYMAPPINGS {{{
@@ -111,7 +110,7 @@ nmap <leader>qd ciw""<esc>P
 nmap <leader>qs ciw''<esc>P
 
 map <Leader>c :source ~/.vim/vimrc<cr>
-map <Leader>n :e ~/.vim/notes.md<cr>
+map <Leader>nn :e ~/.vim/notes<cr>
 map <Leader>w :w<cr>
 
 map <Leader>gs :Gstatus<cr>
@@ -120,13 +119,16 @@ map <Leader>gg :Gpull<cr>
 map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
 
-nmap <C-f> :Files<cr>
-nmap <C-b> :Buffers<cr>
-nmap <C-g> :Rg<cr>
+nmap <Leader>nt :NERDTreeToggle<cr>
+nmap <Leader>nc :NERDTreeCWD<cr>
+nmap <Leader>z :noh<cr>
+nmap <Leader>f :Files<cr>
+nmap <Leader>b :Buffers<cr>
+nmap <Leader>l :BLines<cr>
+nmap <Leader>r :Rg<cr>
 
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
-map <C-z> :noh<cr>
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -137,8 +139,6 @@ nmap <tab><tab> <C-6>
 " √ = Alt + j && ª == Alt + k
 map ª :move-2<cr>
 map √ :move+1<cr>
-map <cr> o<Esc>
-map <S-cr> O<Esc>
 
 vmap < < gv
 vmap > > gv
@@ -168,13 +168,10 @@ iabbrev irc rem-calc()<Left>
 
 set laststatus=2
 set statusline=
-set statusline+=%#Title#
-set statusline+=[%M%R]
+set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
-set statusline+=\ %#Status#
 set statusline+=%=
-set statusline+=%#Title#
-set statusline+=\ %l:%c
+set statusline+=\%l:%c
 set statusline+=\ \|\ %L
 set statusline+=\ 
 
