@@ -75,8 +75,12 @@ let g:table_mode_corner='+'
 let g:python3_host_prog="/urs/local/bin/"
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
-let g:fzf_layout = { 'down': '30%' }
+let g:fzf_layout={ 'down': '30%' }
 let $FZF_DEFAULT_OPTS='--reverse'
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_winsize=13
+let g:netrw_browse_split=2
 
 " }}}
 " APPEARANCE {{{
@@ -111,6 +115,7 @@ nmap <leader>qs ciw''<esc>P
 
 map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>nn :e ~/.vim/notes<cr>
+map <leader>tt 5<c-w>h:Vexplore<cr>
 map <Leader>w :w<cr>
 
 map <Leader>gs :Gstatus<cr>
@@ -118,6 +123,7 @@ map <Leader>gc :Gcommit<cr>
 map <Leader>gg :Gpull<cr>
 map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
+map <Leader>gb :Gblame<cr>
 
 nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
@@ -136,7 +142,7 @@ nmap <tab><tab> <C-6>
 nmap <Leader><Right> :bnext<cr>
 nmap <Leader><Left> :bprevious<cr>
 
-" √ = Alt + j && ª == Alt + k
+" √ = Alt + j & ª = Alt + k
 map ª :move-2<cr>
 map √ :move+1<cr>
 vmap < < gv
