@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
-Plug 'preservim/nerdtree'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'morhetz/gruvbox'
@@ -61,6 +60,7 @@ set splitright
 set splitbelow
 set showmatch
 set completeopt=longest,menuone,noinsert
+set langmap=øæ;{}
 
 " }}}
 " LETS {{{
@@ -83,20 +83,20 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 colorscheme gruvbox
 syntax on
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
 set background=dark
 set synmaxcol=300
 set visualbell
 set number
 set rnu
-set guifont=Menlo:h14
+set guifont=Menlo:h16
 
 " }}}
 " KEYMAPPINGS {{{
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 xmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
@@ -119,8 +119,6 @@ map <Leader>gg :Gpull<cr>
 map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
 
-nmap <Leader>nt :NERDTreeToggle<cr>
-nmap <Leader>nc :NERDTreeCWD<cr>
 nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
@@ -135,14 +133,15 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <tab><tab> <C-6>
+nmap <Leader><Right> :bnext<cr>
+nmap <Leader><Left> :bprevious<cr>
 
 " √ = Alt + j && ª == Alt + k
 map ª :move-2<cr>
 map √ :move+1<cr>
-
 vmap < < gv
 vmap > > gv
-
+vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
 
@@ -175,4 +174,4 @@ set statusline+=\%l:%c
 set statusline+=\ \|\ %L
 set statusline+=\ 
 
- " }}}
+" }}}
