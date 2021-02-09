@@ -80,7 +80,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=13
-let g:netrw_browse_split=2
+let g:netrw_browse_split=0
 
 " }}}
 " APPEARANCE {{{
@@ -112,8 +112,10 @@ nmap <leader>co  :<C-u>CocList outline<cr>
 
 nmap <leader>qd ciw""<esc>P
 nmap <leader>qs ciw''<esc>P
+nmap <leader>; A;<esc>
+nmap <leader>, A,<esc>
 
-map <Leader>c :source ~/.vim/vimrc<cr>
+map <Leader>c :source ~/.vim/vimrc<cr>:noh<cr>
 map <Leader>nn :e ~/.vim/notes<cr>
 map <leader>tt 5<c-w>h:Vexplore<cr>
 map <Leader>w :w<cr>
