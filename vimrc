@@ -24,6 +24,7 @@ call plug#end()
 
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
+set colorcolumn=80
 set guioptions=
 set showtabline=0
 set autoread
@@ -180,6 +181,6 @@ set statusline+=\ \|\ %f
 set statusline+=%=
 set statusline+=\%l:%c
 set statusline+=\ \|\ %L
-set statusline+=\ 
+set statusline+=\ "
 
 " }}}
