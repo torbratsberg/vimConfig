@@ -88,7 +88,7 @@ let g:netrw_browse_split=0
 
 colorscheme gruvbox
 syntax on
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 set background=dark
 set synmaxcol=300
@@ -153,9 +153,7 @@ vmap > > gv
 vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
-
-nmap <tab> '
-nmap t <Plug>(easymotion-overwin-f)
+nmap <Leader>d <Plug>(easymotion-overwin-f)
 
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
