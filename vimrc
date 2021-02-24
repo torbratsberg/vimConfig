@@ -13,9 +13,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'mxw/vim-jsx'
-Plug 'ap/vim-css-color'
 Plug 'morhetz/gruvbox'
-Plug 'tomasr/molokai'
+Plug 'sainnhe/sonokai'
 
 call plug#end()
 
@@ -24,6 +23,7 @@ call plug#end()
 
 filetype plugin indent on
 autocmd FileType scss setl iskeyword+=@-@
+highlight Comment cterm=italic
 set colorcolumn=80
 set guioptions=
 set showtabline=0
@@ -61,7 +61,7 @@ set splitright
 set splitbelow
 set showmatch
 set completeopt=longest,menuone,noinsert
-set langmap=øæ;{}
+set langmap=æø;{}
 
 " }}}
 " LETS {{{
@@ -88,14 +88,14 @@ let g:netrw_browse_split=0
 
 colorscheme gruvbox
 syntax on
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='hard'
 set background=dark
 set synmaxcol=300
 set visualbell
 set number
 set rnu
-set guifont=Menlo:h16
+set guifont=Menlo:h14
 
 " }}}
 " KEYMAPPINGS {{{
@@ -142,8 +142,6 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <tab><tab> <C-6>
-nmap <Leader><Right> :bnext<cr>
-nmap <Leader><Left> :bprevious<cr>
 
 " √ = Alt + j & ª = Alt + k
 map ª :move-2<cr>
@@ -153,13 +151,14 @@ vmap > > gv
 vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
-nmap <Leader>d <Plug>(easymotion-overwin-f)
+nmap <Leader><leader> <Plug>(easymotion-overwin-f)
 
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
+imap `<Tab> ``<Left>
 inoremap {<cr> {<CR>}<ESC>O
 
 " }}}
@@ -174,11 +173,15 @@ iabbrev irc rem-calc()<Left>
 
 set laststatus=2
 set statusline=
+set statusline+=%#Title#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
+set statusline+=\ %#StatusLine#
 set statusline+=%=
-set statusline+=\%l:%c
+set statusline+=%#Title#
+set statusline+=\ %l:%c
 set statusline+=\ \|\ %L
 set statusline+=\ "
+set statusline+=\ %#LineNr#
 
 " }}}
