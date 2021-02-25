@@ -173,15 +173,15 @@ iabbrev irc rem-calc()<Left>
 
 set laststatus=2
 set statusline=
-set statusline+=%#Title#
+set statusline+=%#Macro#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
 set statusline+=\ %#StatusLine#
 set statusline+=%=
-set statusline+=%#Title#
+set statusline+=%#Macro#
 set statusline+=\ %l:%c
 set statusline+=\ \|\ %L
-set statusline+=\ "
 set statusline+=\ %#LineNr#
+set statusline+=\ "
 
 " }}}
