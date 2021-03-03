@@ -76,7 +76,7 @@ let g:table_mode_corner='+'
 let g:python3_host_prog="/urs/local/bin/"
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
-let g:fzf_layout={ 'down': '30%' }
+let g:fzf_layout={ 'down': '20%' }
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:netrw_banner=0
 let g:netrw_liststyle=3
@@ -152,6 +152,7 @@ vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
 nmap <Leader><leader> <Plug>(easymotion-overwin-f)
+nmap <cr> o<esc>
 
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
@@ -159,7 +160,7 @@ imap {<Tab> {}<Left>
 imap '<Tab> ''<Left>
 imap "<Tab> ""<Left>
 imap `<Tab> ``<Left>
-inoremap {<cr> {<CR>}<ESC>O
+inoremap {<cr> {<cr>}<ESC>O
 
 " }}}
 " ABBREVATIONS {{{
