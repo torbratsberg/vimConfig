@@ -30,7 +30,7 @@ set guioptions=
 set showtabline=0
 set autoread
 set history=400
-set updatetime=300
+set updatetime=100
 set foldmethod=marker
 set hidden
 set guicursor+=a:blinkon0
