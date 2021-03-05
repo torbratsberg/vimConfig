@@ -30,7 +30,7 @@ set guioptions=
 set showtabline=0
 set autoread
 set history=400
-set updatetime=300
+set updatetime=200
 set foldmethod=marker
 set hidden
 set guicursor+=a:blinkon0
@@ -133,6 +133,8 @@ map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
 map <Leader>gb :Gblame<cr>
 map <Leader>gd :Gdiffsplit<cr>
+map <Leader>g<Left> :diffget //2<cr>
+map <Leader>g<Right> :diffget //3<cr>
 
 " Looking up stuff commands
 nmap <Leader>z :noh<cr>
