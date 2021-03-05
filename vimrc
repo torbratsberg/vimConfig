@@ -101,9 +101,11 @@ set guifont=Menlo:h14
 " }}}
 " KEYMAPPINGS {{{
 
+" Enter to select first or selected from completion menu
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Coc commands
 xmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cd <Plug>(coc-definition)
@@ -112,38 +114,41 @@ nmap <leader>cn  <Plug>(coc-rename)
 nmap <leader>cp  :<C-u>CocList diagnostics<cr>
 nmap <leader>co  :<C-u>CocList outline<cr>
 
+" Add characters
 nmap <leader>qd ciw""<esc>P
 nmap <leader>qs ciw''<esc>P
 nmap <leader>; A;<esc>
 nmap <leader>, A,<esc>
 
+" Leader misc commands
 map <Leader>c :source ~/.vim/vimrc<cr>:noh<cr>
 map <Leader>nn :e ~/.vim/notes<cr>
 map <Leader>w :w<cr>
 
+" Git commands
 map <Leader>gs :Gstatus<cr>
 map <Leader>gc :Gcommit<cr>
 map <Leader>gg :Gpull<cr>
 map <Leader>gp :Gpush<cr>
 map <Leader>gl :Commits<cr>
 map <Leader>gb :Gblame<cr>
+map <Leader>gd :Gdiffsplit<cr>
 
+" Looking up stuff commands
 nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>l :BLines<cr>
 nmap <Leader>r :Rg<cr>
-nmap <Leader>. :e .<cr>
+nmap <Leader><leader> <Plug>(easymotion-overwin-f)
 
-map <C-c> :e ~/.vim/vimrc<cr>
-map <C-s> :%s///<Left><Left>
-
+" Easier movement between splits
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-nmap <tab><tab> <C-6>
 
+" Control misc commands
 " √ = Alt + j & ª = Alt + k
 map ª :move-2<cr>
 map √ :move+1<cr>
@@ -152,9 +157,12 @@ vmap > > gv
 vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
-nmap <Leader><leader> <Plug>(easymotion-overwin-f)
 nmap <cr> o<esc>
+nmap <tab><tab> <C-6>
+map <C-c> :e ~/.vim/vimrc<cr>
+map <C-s> :%s///<Left><Left>
 
+" Character completion
 imap (<Tab> ()<Left>
 imap [<Tab> []<Left>
 imap {<Tab> {}<Left>
@@ -178,6 +186,7 @@ set statusline=
 set statusline+=%#Macro#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
+set statusline+=\ \|\ %{FugitiveHead()}
 set statusline+=\ %#StatusLine#
 set statusline+=%=
 set statusline+=%#Macro#
