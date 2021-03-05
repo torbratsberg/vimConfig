@@ -4,6 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
@@ -76,7 +77,7 @@ let g:table_mode_corner='+'
 let g:python3_host_prog="/urs/local/bin/"
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
-let g:fzf_layout={ 'down': '20%' }
+let g:fzf_layout={ 'down': '25%' }
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:netrw_banner=0
 let g:netrw_liststyle=3
@@ -88,7 +89,7 @@ let g:netrw_browse_split=0
 
 colorscheme gruvbox
 syntax on
-let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
 set background=dark
 set synmaxcol=300
@@ -118,7 +119,6 @@ nmap <leader>, A,<esc>
 
 map <Leader>c :source ~/.vim/vimrc<cr>:noh<cr>
 map <Leader>nn :e ~/.vim/notes<cr>
-map <leader>tt 5<c-w>h:Vexplore<cr>
 map <Leader>w :w<cr>
 
 map <Leader>gs :Gstatus<cr>
@@ -133,6 +133,7 @@ nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>l :BLines<cr>
 nmap <Leader>r :Rg<cr>
+nmap <Leader>. :e .<cr>
 
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
