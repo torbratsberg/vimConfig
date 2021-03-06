@@ -36,7 +36,7 @@ set hidden
 set guicursor+=a:blinkon0
 set path+=**
 set wildmenu
-set wildignore+=**/node_modules/**,*.o,*.pyc
+set wildignore+=**/node_modules/**,*.o,*.pyc,**/venv/**
 set nowrap
 set tabstop=4
 set shiftwidth=4
@@ -50,7 +50,7 @@ set incsearch
 set noshowcmd
 set noesckeys
 set nocompatible
-set scrolloff=5
+set scrolloff=8
 set shortmess+=c
 set signcolumn=yes
 set lazyredraw
