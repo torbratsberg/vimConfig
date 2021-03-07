@@ -204,3 +204,4 @@ set statusline+=\ %#LineNr#
 set statusline+=\ "
 
 " }}}
+
