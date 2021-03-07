@@ -4,18 +4,24 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'mhinz/vim-signify'
+" Fuzzy finding
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
+
+" Functionality
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-fugitive'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
+Plug 'dhruvasagar/vim-table-mode'
+
+" Git stuff
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+
+" Themes and syntax
 Plug 'mxw/vim-jsx'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/sonokai'
 
 call plug#end()
 
@@ -126,12 +132,12 @@ map <Leader>nn :e ~/.vim/notes<cr>
 map <Leader>w :w<cr>
 
 " Git commands
-map <Leader>gs :Gstatus<cr>
-map <Leader>gc :Gcommit<cr>
-map <Leader>gg :Gpull<cr>
-map <Leader>gp :Gpush<cr>
+map <Leader>gs :G<cr>
+map <Leader>gc :Git commit<cr>
+map <Leader>gg :Git pull<cr>
+map <Leader>gp :Git push<cr>
 map <Leader>gl :Commits<cr>
-map <Leader>gb :Gblame<cr>
+map <Leader>gb :Git blame<cr>
 map <Leader>gd :Gdiffsplit<cr>
 map <Leader>g<Left> :diffget //2<cr>
 map <Leader>g<Right> :diffget //3<cr>
