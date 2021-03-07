@@ -14,10 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
-
-" Git stuff
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 
 " Themes and syntax
 Plug 'mxw/vim-jsx'
@@ -127,7 +124,7 @@ nmap <leader>; A;<esc>
 nmap <leader>, A,<esc>
 
 " Leader misc commands
-map <Leader>c :source ~/.vim/vimrc<cr>:noh<cr>
+map <Leader>c :source ~/.vim/vimrc<cr>
 map <Leader>nn :e ~/.vim/notes<cr>
 map <Leader>w :w<cr>
 
@@ -148,7 +145,9 @@ nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>l :BLines<cr>
 nmap <Leader>r :Rg<cr>
-nmap <Leader><leader> <Plug>(easymotion-overwin-f)
+map <Leader><Leader> <Plug>(easymotion-bd-f)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " Easier movement between splits
 nmap <C-h> <C-w>h
@@ -185,6 +184,7 @@ inoremap {<cr> {<cr>}<ESC>O
 iabbrev iphp <?php ?><Left><Left><Left>
 iabbrev icl console.log();<Left><Left>
 iabbrev irc rem-calc()<Left>
+iabbrev iff function
 
 " }}}
 " STATUSLINE {{{
