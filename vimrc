@@ -51,7 +51,7 @@ set autoindent
 set smartindent
 set smarttab
 set encoding=UTF-8
-set hlsearch
+set nohlsearch
 set incsearch
 set noshowcmd
 set noesckeys
@@ -62,7 +62,7 @@ set signcolumn=yes
 set lazyredraw
 set ttyfast
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 set splitright
 set splitbelow
