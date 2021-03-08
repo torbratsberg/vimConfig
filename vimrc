@@ -86,6 +86,9 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=13
 let g:netrw_browse_split=0
+" Use @ instead of ; in EasyMotion search for ISO layout convenience
+let g:EasyMotion_keys               = get(g:,
+    \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
 " }}}
 " APPEARANCE {{{
