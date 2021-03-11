@@ -107,10 +107,13 @@ set rnu
 set guifont=Menlo:h14
 set guicursor=n-v-c-i:block-Cursor
 set guicursor+=n-v-c:blinkon0
+
+" Customization for the horizon color scheme
 highlight Pmenu guibg=#6c6f93
 highlight Cursor guifg=#000000 guibg=#e95678
 highlight htmlTagName guifg=#21bfc2
 highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
+highlight Visual gui=bold guibg=#2b2e3b guifg=#09f7a0
 
 " }}}
 " KEYMAPPINGS {{{
@@ -211,7 +214,6 @@ set statusline+=%#Macro#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
 set statusline+=\ \|\ %{FugitiveHead()}
-" set statusline+=\ %#StatusLine#
 set statusline+=%=
 set statusline+=%#Macro#
 set statusline+=\ %l:%c
@@ -229,4 +231,3 @@ function! <SID>SynStack()
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
