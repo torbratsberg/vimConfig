@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 " Themes and syntax
 Plug 'mxw/vim-jsx'
 Plug 'morhetz/gruvbox'
+Plug 'ntk148v/vim-horizon'
 
 call plug#end()
 
@@ -85,7 +86,8 @@ let $FZF_DEFAULT_OPTS='--reverse'
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=13
-let g:netrw_browse_split=0
+let g:netrw_altv=1
+
 " Use @ instead of ; in EasyMotion search for ISO layout convenience
 let g:EasyMotion_keys               = get(g:,
     \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
@@ -93,7 +95,7 @@ let g:EasyMotion_keys               = get(g:,
 " }}}
 " APPEARANCE {{{
 
-colorscheme gruvbox
+colorscheme horizon
 syntax on
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
@@ -103,9 +105,16 @@ set visualbell
 set number
 set rnu
 set guifont=Menlo:h14
+set guicursor=n-v-c-i:block-Cursor
+set guicursor+=n-v-c:blinkon0
+highlight Pmenu guibg=#6c6f93
+highlight Cursor guifg=#000000 guibg=#e95678
+highlight htmlTagName guifg=#21bfc2
+highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
 
 " }}}
 " KEYMAPPINGS {{{
+
 
 " Enter to select first or selected from completion menu
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
@@ -183,6 +192,8 @@ imap "<Tab> ""<Left>
 imap `<Tab> ``<Left>
 inoremap {<cr> {<cr>}<ESC>O
 
+map gx <nop>
+
 " }}}
 " ABBREVATIONS {{{
 
@@ -200,7 +211,7 @@ set statusline+=%#Macro#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
 set statusline+=\ \|\ %{FugitiveHead()}
-set statusline+=\ %#StatusLine#
+" set statusline+=\ %#StatusLine#
 set statusline+=%=
 set statusline+=%#Macro#
 set statusline+=\ %l:%c
@@ -209,4 +220,13 @@ set statusline+=\ %#LineNr#
 set statusline+=\ "
 
 " }}}
+
+" Temporary
+nmap <Leader>. :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
