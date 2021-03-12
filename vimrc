@@ -114,6 +114,7 @@ highlight Cursor guifg=#000000 guibg=#e95678
 highlight htmlTagName guifg=#21bfc2
 highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
 highlight Visual gui=bold guibg=#2b2e3b guifg=#09f7a0
+highlight Delimiter guifg=#a95678
 
 " }}}
 " KEYMAPPINGS {{{
@@ -210,12 +211,12 @@ iabbrev iff function
 
 set laststatus=2
 set statusline=
-set statusline+=%#Macro#
+set statusline+=%#Character#
 set statusline+=\ [%M%R]
 set statusline+=\ \|\ %f
 set statusline+=\ \|\ %{FugitiveHead()}
 set statusline+=%=
-set statusline+=%#Macro#
+set statusline+=%#Character#
 set statusline+=\ %l:%c
 set statusline+=\ \|\ %L
 set statusline+=\ %#LineNr#
