@@ -95,7 +95,6 @@ let g:EasyMotion_keys               = get(g:,
 " }}}
 " APPEARANCE {{{
 
-colorscheme horizon
 syntax on
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
@@ -108,17 +107,21 @@ set guifont=Menlo:h14
 set guicursor=n-v-c-i:block-Cursor
 set guicursor+=n-v-c:blinkon0
 
-" Customization for the horizon color scheme
-highlight Pmenu guibg=#6c6f93
-highlight Cursor guifg=#000000 guibg=#e95678
-highlight htmlTagName guifg=#21bfc2
-highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
-highlight Visual gui=bold guibg=#2b2e3b guifg=#09f7a0
-highlight Delimiter guifg=#a95678
+" Horizon does not look too good without gui, but gruvbox does
+if has("gui_running")
+    colorscheme horizon
+    highlight Pmenu guibg=#6c6f93
+    highlight Cursor guifg=#000000 guibg=#e95678
+    highlight htmlTagName guifg=#21bfc2
+    highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
+    highlight Visual gui=bold guibg=#2b2e3b guifg=#09f7a0
+    highlight Delimiter guifg=#a95678
+else
+    colorscheme gruvbox
+endif
 
 " }}}
 " KEYMAPPINGS {{{
-
 
 " Enter to select first or selected from completion menu
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
@@ -223,12 +226,3 @@ set statusline+=\ %#LineNr#
 set statusline+=\ "
 
 " }}}
-
-" Temporary
-nmap <Leader>. :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
