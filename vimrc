@@ -50,6 +50,8 @@ set smarttab
 set encoding=UTF-8
 set nohlsearch
 set incsearch
+set smartcase
+set ignorecase
 set noshowcmd
 set noesckeys
 set nocompatible
