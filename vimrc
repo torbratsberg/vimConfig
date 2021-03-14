@@ -98,6 +98,7 @@ let g:EasyMotion_keys               = get(g:,
 syntax on
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
+set transparency=0
 set background=dark
 set synmaxcol=300
 set visualbell
@@ -164,7 +165,6 @@ map <Leader>g<Right> :diffget //3<cr>
 nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
-nmap <Leader>l :BLines<cr>
 nmap <Leader>r :Rg<cr>
 map <Leader><Leader> <Plug>(easymotion-bd-f)
 map <Leader>j <Plug>(easymotion-j)
@@ -199,6 +199,12 @@ imap "<Tab> ""<Left>
 imap `<Tab> ``<Left>
 inoremap {<cr> {<cr>}<ESC>O
 
+" Quickfix
+nmap <Leader>h :cnext<cr>
+nmap <Leader>l :cprev<cr>
+nmap <Leader>qf :copen<cr>
+
+" Fix for a problem I had
 map gx <nop>
 
 " }}}
@@ -226,3 +232,4 @@ set statusline+=\ %#LineNr#
 set statusline+=\ "
 
 " }}}
+
