@@ -11,7 +11,6 @@ Plug 'airblade/vim-rooter'
 
 " Functionality
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
@@ -20,8 +19,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'mxw/vim-jsx'
 Plug 'morhetz/gruvbox'
 Plug 'ntk148v/vim-horizon'
-
-Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -163,10 +160,11 @@ map <Leader>g<Left> :diffget //2<cr>
 map <Leader>g<Right> :diffget //3<cr>
 
 " Looking up stuff commands
-nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
+nmap s /
+nmap S ?
 
 " Easier movement between splits
 nmap <C-h> <C-w>h
@@ -183,7 +181,6 @@ vmap > > gv
 vmap <esc> <C-c>
 nnoremap <silent> , @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap , zf
-nmap <cr> o<esc>
 nmap <tab><tab> <C-6>
 map <C-c> :e ~/.vim/vimrc<cr>
 map <C-s> :%s///<Left><Left>
