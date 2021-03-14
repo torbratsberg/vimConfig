@@ -11,7 +11,7 @@ Plug 'airblade/vim-rooter'
 
 " Functionality
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
@@ -20,6 +20,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'mxw/vim-jsx'
 Plug 'morhetz/gruvbox'
 Plug 'ntk148v/vim-horizon'
+
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -98,7 +100,6 @@ let g:EasyMotion_keys               = get(g:,
 syntax on
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='hard'
-set transparency=0
 set background=dark
 set synmaxcol=300
 set visualbell
@@ -166,9 +167,6 @@ nmap <Leader>z :noh<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
-map <Leader><Leader> <Plug>(easymotion-bd-f)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 " Easier movement between splits
 nmap <C-h> <C-w>h
