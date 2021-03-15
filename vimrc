@@ -14,6 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
+Plug 'haya14busa/incsearch.vim'
 
 " Themes and syntax
 Plug 'mxw/vim-jsx'
@@ -36,7 +37,6 @@ set history=400
 set updatetime=200
 set foldmethod=marker
 set hidden
-set guicursor+=a:blinkon0
 set path+=**
 set wildmenu
 set wildignore+=**/node_modules/**,*.o,*.pyc,**/venv/**
@@ -165,8 +165,10 @@ map <Leader>g<Right> :diffget //3<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
-nmap s /
-nmap S ?
+nmap <leader>g :vimgrep "" **/*<left><left><left><left><left><left>
+" Set mark at s to be able to jump back to search start
+map s  ms<Plug>(incsearch-forward)
+map S  ms<Plug>(incsearch-backward)
 
 " Easier movement between splits
 nmap <C-h> <C-w>h
@@ -197,8 +199,8 @@ imap `<Tab> ``<Left>
 inoremap {<cr> {<cr>}<ESC>O
 
 " Quickfix
-nmap <Leader>h :cnext<cr>
-nmap <Leader>l :cprev<cr>
+nmap <Leader>h :cprev<cr>
+nmap <Leader>l :cnext<cr>
 nmap <Leader>qf :copen<cr>
 
 " Fix for a problem I had
@@ -229,4 +231,3 @@ set statusline+=\ %#LineNr#
 set statusline+=\ "
 
 " }}}
-
