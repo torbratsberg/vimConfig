@@ -82,7 +82,7 @@ let g:table_mode_corner='+'
 let g:python3_host_prog="/urs/local/bin/"
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:fzf_preview_window = [0]
-let g:fzf_layout={ 'down': '25%' }
+let g:fzf_layout={ 'up': '25%' }
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:netrw_banner=0
 let g:netrw_liststyle=3
@@ -165,7 +165,6 @@ map <Leader>g<Right> :diffget //3<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
-nmap <leader>g :vimgrep "" **/*<left><left><left><left><left><left>
 " Set mark at s to be able to jump back to search start
 map s  ms<Plug>(incsearch-forward)
 map S  ms<Plug>(incsearch-backward)
