@@ -113,9 +113,9 @@ if has("gui_running")
     colorscheme horizon
     highlight Pmenu guibg=#6c6f93
     highlight Cursor guifg=#000000 guibg=#e95678
-    highlight htmlTagName guifg=#21bfc2
+    highlight htmlTagName gui=italic guifg=#21bfc2
     highlight Statement cterm=italic gui=italic ctermfg=171 guifg=#b877db
-    highlight Visual gui=bold guibg=#2b2e3b guifg=#09f7a0
+    highlight Visual gui=italic guibg=#2b2e3b guifg=#09f7a0
     highlight Delimiter guifg=#a95678
 else
     colorscheme gruvbox
@@ -123,6 +123,9 @@ endif
 
 " }}}
 " KEYMAPPINGS {{{
+
+" Keyboards should have escape key on home row
+imap fj <Esc>
 
 " Enter to select first or selected from completion menu
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
