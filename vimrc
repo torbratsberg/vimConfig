@@ -89,10 +89,6 @@ let g:netrw_liststyle=3
 let g:netrw_winsize=13
 let g:netrw_altv=1
 
-" Use @ instead of ; in EasyMotion search for ISO layout convenience
-let g:EasyMotion_keys               = get(g:,
-    \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
-
 " }}}
 " APPEARANCE {{{
 
@@ -214,7 +210,6 @@ map gx <nop>
 iabbrev iphp <?php ?><Left><Left><Left>
 iabbrev icl console.log();<Left><Left>
 iabbrev irc rem-calc()<Left>
-iabbrev iff function
 
 " }}}
 " STATUSLINE {{{
