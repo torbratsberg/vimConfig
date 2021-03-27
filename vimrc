@@ -168,7 +168,8 @@ nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
 
-" Easymotion maps
+" In file finding
+nmap gs /
 map <Leader><Leader> <Plug>(easymotion-bd-f)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
