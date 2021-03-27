@@ -14,7 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-fugitive'
-Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
 
 " Themes and syntax
 Plug 'mxw/vim-jsx'
@@ -88,6 +88,9 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=13
 let g:netrw_altv=1
+" Use @ instead of ; in EasyMotion search for ISO layout convenience
+let g:EasyMotion_keys = get(g:,
+    \ 'EasyMotion_keys', 'asdghklqwertyuiopzxcvbnmfj@')
 
 " }}}
 " APPEARANCE {{{
@@ -164,9 +167,11 @@ map <Leader>g<Right> :diffget //3<cr>
 nmap <Leader>f :Files<cr>
 nmap <Leader>b :Buffers<cr>
 nmap <Leader>r :Rg<cr>
-" Set mark at s to be able to jump back to search start
-map s  ms<Plug>(incsearch-forward)
-map S  ms<Plug>(incsearch-backward)
+
+" Easymotion maps
+map <Leader><Leader> <Plug>(easymotion-bd-f)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " Easier movement between splits
 nmap <C-h> <C-w>h
